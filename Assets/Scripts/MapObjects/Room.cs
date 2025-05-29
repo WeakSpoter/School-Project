@@ -110,6 +110,26 @@ public class Room : MonoBehaviour
                 {
                     case DoorPos.Up:
                         Edge.transform.position += Vector3.up * 6.5f;
+                        Edge.transform.localScale = new Vector2(2f, 5f);
+                        break;
+                    case DoorPos.Down:
+                        Edge.transform.position += Vector3.down * 6.5f;
+                        Edge.transform.localScale = new Vector2(2f, 5f);
+                        break;
+                    case DoorPos.Left:
+                        Edge.transform.position += Vector3.left * 9.75f;
+                        Edge.transform.localScale = new Vector2(7.5f, 2f);
+                        //Instantiate(edge, (Vector2)this.transform.position + Vector2.left * 9.75f, Quaternion.identity);
+                        break;
+                    case DoorPos.Right:
+                        Edge.transform.position += Vector3.right * 9.75f;
+                        Edge.transform.localScale = new Vector2(7.5f, 2f);
+                        //Instantiate(edge, (Vector2)this.transform.position + Vector2.right * 9.75f, Quaternion.identity);
+                        break;
+
+                    //원본임
+                    /*case DoorPos.Up:
+                        Edge.transform.position += Vector3.up * 6.5f;
                         Edge.transform.localScale = new Vector2(0.5f, 2f);
                         break;
                     case DoorPos.Down:
@@ -125,7 +145,7 @@ public class Room : MonoBehaviour
                         Edge.transform.position += Vector3.right * 9.75f;
                         Edge.transform.localScale = new Vector2(7.5f, 0.5f);
                         //Instantiate(edge, (Vector2)this.transform.position + Vector2.right * 9.75f, Quaternion.identity);
-                        break;
+                        break;*/
                 }
             }
         }
@@ -152,6 +172,22 @@ public class Room : MonoBehaviour
                         //Instantiate(edge, (Vector2)this.transform.position + Vector2.right * 9.75f, Quaternion.identity);
                         Debug.DrawRay(this.transform.position, Vector2.right * 13f, Color.red);
                         break;
+
+                    //원본임
+                    /*case DoorPos.Up:
+                        Debug.DrawRay(this.transform.position, Vector2.up * 7f, Color.red);
+                        break;
+                    case DoorPos.Down:
+                        Debug.DrawRay(this.transform.position, Vector2.down * 7f, Color.red);
+                        break;
+                    case DoorPos.Left:
+                        //Instantiate(edge, (Vector2)this.transform.position + Vector2.left * 9.75f, Quaternion.identity);
+                        Debug.DrawRay(this.transform.position, Vector2.left * 13f, Color.red);
+                        break;
+                    case DoorPos.Right:
+                        //Instantiate(edge, (Vector2)this.transform.position + Vector2.right * 9.75f, Quaternion.identity);
+                        Debug.DrawRay(this.transform.position, Vector2.right * 13f, Color.red);
+                        break;*/
                 }
             }
         }

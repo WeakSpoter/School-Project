@@ -63,6 +63,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip thornTrapSFX;
     public AudioClip bearTrapSFX;
     public AudioClip arrowTrapSFX;
+    public AudioClip DoorOpenSFX;
 
     private void Awake()
     {
@@ -168,6 +169,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "arrowTrap":
                 SFXChannel.PlayOneShot(arrowTrapSFX);
+                break;
+            case "DoorOpen":
+                SFXChannel.PlayOneShot(DoorOpenSFX);
                 break;
         }
     }

@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -505,6 +502,7 @@ MonoBehaviour:
   zomSlashPrefab: {fileID: 5130950716568766666, guid: 133b52210e0d6164095df4a0dd4040d3, type: 3}
   skeletonPrefab: {fileID: 305056237949553693, guid: 4530ccf73a563ee4ea29163f93ba426f, type: 3}
   skelBonePrefab: {fileID: 7001923015446853714, guid: 084ee0939d5cf134387317e1e460515a, type: 3}
+  mimicPrefab: {fileID: 0}
   skelMageAttackPrefab: {fileID: 1835994838581165908, guid: 40ed63464d089a847845fffdea3fe77f, type: 3}
   skelMagePotionPrefab: {fileID: 2491319634984396705, guid: 43dbbcb0fb6219a4281f4e17d71ba616, type: 3}
   boneShotPrefab: {fileID: 8744707498138694341, guid: f4323442897a56e4d948548550d76156, type: 3}
@@ -655,8 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d78c1aa7d173459ffc2facb10c03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 1
-  uiManager: {fileID: 0}
+  playState: 0
 --- !u!4 &520689040
 Transform:
   m_ObjectHideFlags: 0
@@ -921,6 +918,7 @@ EdgeCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917982569}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -944,7 +942,8 @@ EdgeCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: -6}
   m_EdgeRadius: 0
   m_Points:
@@ -962,6 +961,7 @@ EdgeCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917982569}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -985,7 +985,8 @@ EdgeCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 6}
   m_EdgeRadius: 0
   m_Points:
@@ -1003,6 +1004,7 @@ EdgeCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917982569}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1026,7 +1028,8 @@ EdgeCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 11, y: 0}
   m_EdgeRadius: 0
   m_Points:
@@ -1044,6 +1047,7 @@ EdgeCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917982569}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1067,7 +1071,8 @@ EdgeCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -11, y: 0}
   m_EdgeRadius: 0
   m_Points:
@@ -1155,7 +1160,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3462,6 +3467,7 @@ TilemapCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033916973}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3485,7 +3491,8 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -3528,11 +3535,12 @@ MonoBehaviour:
   halfHp: {fileID: 21300000, guid: 1396fecfd54bff44f8548f00798d7112, type: 3}
   emptyHp: {fileID: 21300000, guid: 703a265c0bd768c4b8ea660ed9b9c960, type: 3}
   effection: {fileID: 8301633389218264379, guid: 3b9eca5526a948e48b7123b335ded598, type: 3}
-  _bless: {fileID: 21300000, guid: 874a5c609dd41fa4bac27e60f8ba6df7, type: 3}
-  _slow: {fileID: 21300000, guid: 27c01f6ecfdb0d740bb6ba91f35be6cc, type: 3}
-  _bleed: {fileID: 21300000, guid: a8d19eef725dc6848a451c6a9ba92728, type: 3}
-  _poisoned: {fileID: 21300000, guid: 266565bea8a7cde47acd89bca3c5c004, type: 3}
-  _bind: {fileID: 21300000, guid: 66a310670459aed4cb0ccaddf40f48f4, type: 3}
+  bless: {fileID: 0}
+  shield: {fileID: 0}
+  slow: {fileID: 0}
+  bleed: {fileID: 0}
+  poisoned: {fileID: 0}
+  bind: {fileID: 0}
   Skill1: {fileID: 0}
   Skill1Time: {fileID: 0}
   Skill2: {fileID: 0}
@@ -3658,7 +3666,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109eb14bcad9eaf4294dfed9e93982ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource_Bg: {fileID: 0}
+  mainVolume: 1
+  bgmVolume: 1
+  sfxVolume: 1
+  BGMChannel: {fileID: 0}
+  SFXChannel: {fileID: 0}
+  titleBGM: {fileID: 0}
+  inGameBGM: {fileID: 0}
+  lobbyBGM: {fileID: 0}
+  clickSFX: {fileID: 0}
+  playerHitSFX: {fileID: 0}
+  getItemSFX: {fileID: 0}
+  mageAttackSFX: {fileID: 0}
+  mageAttackNormalHitSFX: {fileID: 0}
+  mageAttackCriticalHitSFX: {fileID: 0}
+  mageTeleportSFX: {fileID: 0}
+  mageBlessSFX: {fileID: 0}
+  slimeSpawnSFX: {fileID: 0}
+  slimeAttackSFX: {fileID: 0}
+  slimeDeathSFX: {fileID: 0}
+  zombieAttackSFX: {fileID: 0}
+  zombieDeathSFX: {fileID: 0}
+  skeletonSpawnSFX: {fileID: 0}
+  skeletonAttackSFX: {fileID: 0}
+  skeletonDeathSFX: {fileID: 0}
+  mimicAwakeSFX: {fileID: 0}
+  mimicDeathSFX: {fileID: 0}
+  skeletonMageAttackSFX: {fileID: 0}
+  skeletonMageSummonSFX: {fileID: 0}
+  skeletonMageDeathSFX: {fileID: 0}
+  randomSpawnerSFX: {fileID: 0}
+  woodBreakSFX: {fileID: 0}
+  jarBreakSFX: {fileID: 0}
+  slimeSpawnerBreakSFX: {fileID: 0}
+  explosionSFX: {fileID: 0}
+  thornTrapSFX: {fileID: 0}
+  bearTrapSFX: {fileID: 0}
+  arrowTrapSFX: {fileID: 0}
 --- !u!4 &1168832540
 Transform:
   m_ObjectHideFlags: 0
@@ -3868,19 +3912,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: spawnPoints.Array.data[0]
+      propertyPath: 'spawnPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 610495040}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: spawnPoints.Array.data[1]
+      propertyPath: 'spawnPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1564532020}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: spawnPoints.Array.data[2]
+      propertyPath: 'spawnPoints.Array.data[2]'
       value: 
       objectReference: {fileID: 350150702}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: spawnPoints.Array.data[3]
+      propertyPath: 'spawnPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 2017297539}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
@@ -3888,27 +3932,27 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: monsterPrefabs.Array.data[0]
+      propertyPath: 'monsterPrefabs.Array.data[0]'
       value: 
       objectReference: {fileID: 7792186109327791335, guid: 411450637ce622a4eb1a268a56aab6e5, type: 3}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: monsterPrefabs.Array.data[1]
+      propertyPath: 'monsterPrefabs.Array.data[1]'
       value: 
       objectReference: {fileID: 305056237949553693, guid: 4530ccf73a563ee4ea29163f93ba426f, type: 3}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: HealPotionSpawn.Array.data[0]
+      propertyPath: 'HealPotionSpawn.Array.data[0]'
       value: 
       objectReference: {fileID: 883752479}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: HealPotionSpawns.Array.data[0]
+      propertyPath: 'HealPotionSpawns.Array.data[0]'
       value: 
       objectReference: {fileID: 883752479}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: HealPotionSpawns.Array.data[1]
+      propertyPath: 'HealPotionSpawns.Array.data[1]'
       value: 
       objectReference: {fileID: 56349238}
     - target: {fileID: -7834288498769987805, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}
-      propertyPath: HealPotionSpawns.Array.data[2]
+      propertyPath: 'HealPotionSpawns.Array.data[2]'
       value: 
       objectReference: {fileID: 1313740904}
     - target: {fileID: -9517221295050112, guid: d227bfb4ba3ac3a41a8f2102bdad9ae1, type: 3}

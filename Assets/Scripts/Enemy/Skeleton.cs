@@ -8,6 +8,7 @@ public class Skeleton : Enemy
     public float DistanceWithPlayer;
     public float RayLength;
     public GameObject boneAttack;
+    
 
     //Properties of Attack
     Vector2 attackDir;

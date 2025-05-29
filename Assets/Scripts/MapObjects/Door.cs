@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Door : MonoBehaviour
 {
+    public Image Panel;
+    float time = 0f;
+    float F_time = 1f;
     public bool isOpen = false;
     bool flag = false;
     public DoorPos pos;
@@ -15,6 +20,7 @@ public class Door : MonoBehaviour
     Camera cam;
     GameObject minimapCam;
     GameObject player;
+
 
     private void Awake()
     {
@@ -29,8 +35,9 @@ public class Door : MonoBehaviour
         if (flag && Input.GetKeyDown(KeyCode.E))
         {
             UseDoor(player);
+            SoundManager.instance.PlaySound("DoorOpen");
         }
-    }
+}
 
     public void DoorOpen()
     {
@@ -46,8 +53,46 @@ public class Door : MonoBehaviour
         col.isTrigger = false;
     }
 
-    void UseDoor(GameObject player)
+    public void fade()
     {
+        {
+            StartCoroutine(FadeFlow());
+        }
+
+        IEnumerator FadeFlow()
+        {
+            yield return new WaitForSeconds(0f);
+            Panel.gameObject.SetActive(true);
+            time = 0f;
+            Color alpha = Panel.color;
+            while (alpha.a < 1f)
+            {
+                time += Time.deltaTime / F_time;
+                alpha.a = Mathf.Lerp(0, 1, time);
+                Panel.color = alpha;
+                yield return null;
+            }
+            time = 0f;
+
+
+
+            while (alpha.a > 0f)
+            {
+                time += Time.deltaTime / F_time;
+                alpha.a = Mathf.Lerp(1, 0, time);
+                Panel.color = alpha;
+                yield return null;
+            }
+            Panel.gameObject.SetActive(false);
+            yield return null;
+
+        }
+    }
+
+
+    public void UseDoor(GameObject player)
+    {
+      
         Player pLogic = player.GetComponent<Player>();
         Room rInfo = pLogic.curRoom.GetComponent<Room>();
         int idx = rInfo.conDoors.IndexOf(pos);
@@ -75,6 +120,7 @@ public class Door : MonoBehaviour
             cam.transform.position = nextRoom.position + new Vector3(0.5f, 1.5f, -1);
             minimapCam.transform.position = new Vector3(nextRoom.position.x, nextRoom.position.y, minimapCam.transform.position.z);
             if (GameManager.instance.playState != PlayState.InPlay) SceneChanger.ToPlay();
+
         }
     }
 

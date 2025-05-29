@@ -40,7 +40,8 @@ public class Slime : Enemy
 
         if(charge)
         {
-            transform.Translate(attackDir.normalized * speed *  Time.deltaTime * 6);
+            //transform.Translate(attackDir.normalized * speed *  Time.deltaTime * 6);
+            this.GetComponent<Rigidbody2D>().AddForce(attackDir.normalized * speed * 1);
         }
     }
     
@@ -58,6 +59,7 @@ public class Slime : Enemy
         isAttack = false;
         anim.enabled = true;
         attackTick = 0;
+        this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     protected override void Chase()

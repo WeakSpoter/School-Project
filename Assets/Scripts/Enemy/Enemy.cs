@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("- Common Status")]
     //General Status
+    public GameObject effect;
     public float hp;
     public float _hp;
     public float speed;
@@ -58,7 +59,7 @@ public class Enemy : MonoBehaviour
     public void Hit(float damage)
     {
         this._hp -= damage;
-        render.color = Color.white * 0.7f + new Color(0, 0, 0, 1);
+        render.color = Color.red * 0.7f + new Color(0, 0, 0, 1);
         Debug.Log(_hp);
         if (_hp <= 0)
         {
@@ -67,21 +68,30 @@ public class Enemy : MonoBehaviour
             {
                 SoundManager.instance.PlaySound("slimeDeath");
                 GameManager.e_Slime += 1;
+                Instantiate(effect, this.transform.position, Quaternion.identity);
+                //this.transform.parent.parent.parent.GetComponent<NodeMap>().GetNodeMap();
+
             }
             else if (this is Zombie)
             {
                 SoundManager.instance.PlaySound("zombieDeath");
                 GameManager.e_Zombie += 1;
+                Instantiate(effect, this.transform.position, Quaternion.identity);
+                
             }
             else if (this is Skeleton)
             {
                 SoundManager.instance.PlaySound("skeletonDeath");
                 GameManager.e_Skeleton += 1;
+                Instantiate(effect, this.transform.position, Quaternion.identity);
+                
             }
             else if (this is SkeletonMage)
             {
                 SoundManager.instance.PlaySound("skeletonMageDeath");
                 SceneChanger.ToClear();
+                Instantiate(effect, this.transform.position, Quaternion.identity);
+                
             }
             else if (this is Mimic)
             {

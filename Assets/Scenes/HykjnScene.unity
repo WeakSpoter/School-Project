@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -228,14 +225,17 @@ MonoBehaviour:
   fullHp: {fileID: 21300000, guid: a3b3cfb96ca1e3e4bab0e16a58390091, type: 3}
   halfHp: {fileID: 21300000, guid: 1396fecfd54bff44f8548f00798d7112, type: 3}
   emptyHp: {fileID: 21300000, guid: 703a265c0bd768c4b8ea660ed9b9c960, type: 3}
-  debuff: {fileID: 0}
+  effection: {fileID: 0}
+  bless: {fileID: 0}
+  shield: {fileID: 0}
   slow: {fileID: 0}
-  bleeding: {fileID: 0}
+  bleed: {fileID: 0}
   poisoned: {fileID: 0}
   bind: {fileID: 0}
-  buff: {fileID: 0}
-  bless: {fileID: 0}
-  dodgeSkill: {fileID: 2025225302}
+  Skill1: {fileID: 0}
+  Skill1Time: {fileID: 0}
+  Skill2: {fileID: 0}
+  Skill2Time: {fileID: 0}
 --- !u!4 &145188439
 Transform:
   m_ObjectHideFlags: 0
@@ -1503,7 +1503,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4840,7 +4840,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5669,6 +5669,7 @@ TilemapCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849459095}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -5692,7 +5693,8 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_CompositeOperation: 1
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -5705,6 +5707,7 @@ CompositeCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849459095}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -5728,7 +5731,8 @@ CompositeCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 1
   m_GenerationType: 0
@@ -5858,10 +5862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d78c1aa7d173459ffc2facb10c03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 1
-  score: 0
   playState: 1
-  uiManager: {fileID: 145188438}
 --- !u!4 &1852164122
 Transform:
   m_ObjectHideFlags: 0

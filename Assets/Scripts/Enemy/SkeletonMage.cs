@@ -190,7 +190,7 @@ public class SkeletonMage : Enemy
             }
         }
 
-        ChangeSpeed(true);
+        //ChangeSpeed(true);
 
         //클리어 판별
         if (potionGen && potionCount == 0)
@@ -201,7 +201,7 @@ public class SkeletonMage : Enemy
 
             render.color = new Color(1, 1, 1, 1);
             this.GetComponent<Collider2D>().enabled = true;
-            ChangeSpeed(false);
+            //ChangeSpeed(false);
         }
         else if (HealTimer >= 10)
         {
@@ -212,7 +212,7 @@ public class SkeletonMage : Enemy
 
             render.color = new Color(1, 1, 1, 1);
             this.GetComponent<Collider2D>().enabled = true;
-            ChangeSpeed(false);
+            //ChangeSpeed(false);
         }
         if (phase == PatternState.Fail)
         {
@@ -291,6 +291,7 @@ public class SkeletonMage : Enemy
             if (enemy == this.gameObject || enemy == null) continue;
             Enemy elogic = enemy.GetComponent<Enemy>();
             elogic.speedWeight = fast ? 2 : 1;
+            //속도 조정
         }
     }
 }
